@@ -1,0 +1,5 @@
+ROGUELET
+========
+
+An in-browser roguelike with a unique approach to magic.
+

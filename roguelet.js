@@ -1,17 +1,17 @@
 (function() {
     "use strict";
 
-    require(['map.js'], function() {
-        var map = new Map({
-            container: "div#map",
+    require(['world.js'], function() {
+        var world = new World({
+            container: "div#world",
             height: 5,
             width: 5,
         });
 
-        map.create();
-        console.log("Map.create() done."); 
+        world.create();
 
-        window.map = map;
+        // hoist it to the global scope for debugging
+        window.world = world;
 
     });
 

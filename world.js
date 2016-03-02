@@ -1,6 +1,10 @@
 "use strict";
 
-function Map(options) {
+/**
+ * The World is an encapsulation of the entire state of the game
+ */
+
+var World = function(options) {
     var my = this;
 
     // Merge given options into this
@@ -15,8 +19,8 @@ function Map(options) {
 
 }
 
-Map.prototype.create = function() {
-    // Build the map's HTML
+World.prototype.create = function() {
+    // Build the world's HTML
     var my = this;
 
     for (var h = 0; h < my.height; h++ ) {
@@ -31,7 +35,7 @@ Map.prototype.create = function() {
             row.appendChild(cell);
         }
 
-        // Add row to map
+        // Add row to world
         my.container.appendChild(row);
     }
 

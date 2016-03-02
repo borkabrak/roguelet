@@ -1,5 +1,28 @@
+$bodyback: #343;
+$mapback: #333;
+
+body {
+    background-color: $bodyback;
+}
+
 #map {
     width: 30em;
     height: 30em; 
-    border: solid red 3px;
+    border: solid black 3px;
+    display: flex;
+    flex-direction: column;
+
+    background-color: $mapback;
+}
+
+.row {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.cell {
+    border: solid #555 1px;
+    height: 100%;
+    width: 100%;
 }

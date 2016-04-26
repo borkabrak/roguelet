@@ -1,23 +1,42 @@
 /**
  * A cell is a unit of space in the world.
  *
- *  - a cell has no knowledge of its relationship to the world.  It only knows
- *  what it contains, but even treats them as black boxes.  It can do things to
- *  them like burn or levitate, but it doesn't see internals, and can't call
- *  object-specific methods on its contents.
+ *  - a cell has no knowledge of its relationship to the world. (It can't see
+ *  what contains it).  It only knows what it contains.
+ *
  */
 
-var Cell = function(content) {
+var Cell = function(options) {
     var my = this;
-    my.content = [];
-
-    my.place(content);
+    options = options || {};
+    
+    /**
+     * PROPERTIES
+     *
+     * contents - array of all objects that currently exist within the cell
+     *
+     * container - DOM element representation of the cell
+     */
+    
+    my.contents = [];
+    my.container = document.createElement("div");
+    my.container.classList.add("cell");
+    my.container.innerHTML = " . ";
 }
 
-Cell.prototype.place = function(object) {
+Cell.prototype.classname = "Cell";
+
+/**
+ * add(object) - include <object> in the cell contents
+*/
+Cell.prototype.put = function(object) {
     var my = this;
-    my.content.push(object);
+    my.contents.push(object);
+    my.container.innerHTML = object.toString();
 }
 
-Cell.prototype.show = function() {
-}
+/** 
+ *  push() - alias for put()
+ */
+Cell.prototype.push = Cell.prototype.put;
+

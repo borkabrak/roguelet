@@ -1,22 +1,34 @@
+"use strict";
 (function() {
-    "use strict";
 
-    require(['world.js', 'player.js', 'cell.js'], function() {
+    // Convenience functions
+    
+    // Selection -> node
+    Window.qs = function(selector) { return document.querySelector(selector); }
+    Window.qsa = function(selector) { return Array.prototype.slice.call(document.querySelectorAll(selector)); }
 
-        var world = new World({
-            container: "div#map",
+    require(['map.js', 'cell.js', 'player.js'], function() {
+
+        // create the map
+        var map = new Map({
+            container: ".map",
             height: 5,
             width: 5,
         });
-        world.create();
 
+        // create a player character
         var player = new Player({
-            name: "Mykul",
+            name: "PlayerGuy",
         });
 
-        // hoist it to the global scope for debugging
-        [ window.world, window.player ] = [ world, player ];
+        // Put the player on the map
+        // map.at(1,2).put(player);
 
+        // Drop some debug info
+        console.log("map: %o\nplayer: %o", map, player);
+        
+        window.map = map;
+        window.player = player;
     });
 
 })();

@@ -3,26 +3,30 @@ $mapback: #333;
 
 body {
     background-color: $bodyback;
+    font-family: Montaga, Acme, sans;
 }
 
-#map {
-    width: 30em;
-    height: 30em; 
+.map {
     border: solid black 3px;
-    display: flex;
-    flex-direction: column;
-
     background-color: $mapback;
 }
 
 .row {
-    height: 100%;
-    width: 100%;
+    // Display cells left-to-right, instead of the default 'block' mode.
     display: flex;
 }
 
 .cell {
+
     border: solid #555 1px;
-    height: 100%;
+
+    // cells fill their rows
     width: 100%;
+
+    // Center content
+    display: flex;
+    justify-content: center;
+
+    // height will be set dynamically, equal to width
+
 }

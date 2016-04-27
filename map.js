@@ -1,12 +1,30 @@
 "use strict";
 
+/**
+ * Map
+ *
+ *  Tracks and outputs contents of the game world.
+ *
+ *  Recognized options:
+ *
+ *      size
+ *      width
+ *      height
+ *
+ *      container
+ */
+
 var Map = function(options) {
     var my = this;
 
+    if ( options.size ) {
+        [ my.width, my.height ] = options.size.split("x");
+    }
+
     // Set properties from options, with defaults
-    my.width = options.width      || 5;
-    my.height = options.height    || 5;
-    my.container = document.querySelector(options.container || "#map");
+    my.width = options.width      || my.width || 5;
+    my.height = options.height    || my.height || 5;
+    my.container = document.querySelector(options.container || ".map");
 
     // Loop through height and width, building contents (data) and container
     // (DOM) 
@@ -14,7 +32,6 @@ var Map = function(options) {
     my.contents = [];
     // for each row..
     for ( var i = 0; i < my.height; i++ ) {
-        console.log("row number %s..", i);
 
         my.contents[i] = [];
 

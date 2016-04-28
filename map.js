@@ -7,11 +7,15 @@
  *
  *  Recognized options:
  *
- *      size
+ *    - size (<width>x<height>, e.g. '4x3')
+ *
+ *        OR
+ *
  *      width
+ *          AND
  *      height
  *
- *      container
+ *    - container
  */
 
 var Map = function(options) {

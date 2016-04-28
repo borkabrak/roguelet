@@ -3,30 +3,31 @@ $mapback: #333;
 
 body {
     background-color: $bodyback;
-    font-family: Montaga, Acme, sans;
+    font-family: IM FELL English, Acme, sans;
 }
 
+/* Style the map */
 .map {
     border: solid black 3px;
     background-color: $mapback;
+
+    .row {
+        // Display cells left-to-right, instead of the default 'block' mode.
+        display: flex;
+    }
+
+    .cell {
+
+        border: solid #555 1px;
+
+        // Cells fill rows
+        width: 100%;
+
+        // Center content
+        display: flex;
+        justify-content: center;
+
+    }
+
 }
 
-.row {
-    // Display cells left-to-right, instead of the default 'block' mode.
-    display: flex;
-}
-
-.cell {
-
-    border: solid #555 1px;
-
-    // cells fill their rows
-    width: 100%;
-
-    // Center content
-    display: flex;
-    justify-content: center;
-
-    // height will be set dynamically, equal to width
-
-}

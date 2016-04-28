@@ -21,7 +21,7 @@ var Cell = function(options) {
     my.contents = [];
     my.container = document.createElement("div");
     my.container.classList.add("cell");
-    my.container.innerHTML = " . ";
+    my.container.innerHTML = Config.empty;
 }
 
 Cell.prototype.classname = "Cell";

@@ -18,8 +18,10 @@
  *    - container
  */
 
+/* Map constructor */
 var Map = function(options) {
     var my = this;
+    my.classname = "Map";
 
     if ( options.size ) {
         [ my.width, my.height ] = options.size.split("x");
@@ -53,8 +55,6 @@ var Map = function(options) {
     };
 
 }
-
-Map.prototype.classname = "Map";
 
 /**
  * at() - return the cell at the given x/y coordinates

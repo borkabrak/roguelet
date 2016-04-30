@@ -8,6 +8,9 @@
 
 var Cell = function(options) {
     var my = this;
+
+    my.classname = "Cell";
+
     options = options || {};
     
     /**
@@ -23,8 +26,6 @@ var Cell = function(options) {
     my.container.classList.add("cell");
     my.container.innerHTML = Config.empty;
 }
-
-Cell.prototype.classname = "Cell";
 
 /**
  * add(object) - include <object> in the cell contents

@@ -35,7 +35,7 @@
 
         // create the map
         var map = new Map({ 
-            size: '4x4',
+            size: '5x5',
         });
 
         // create a player character

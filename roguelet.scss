@@ -8,8 +8,11 @@ body {
 
 /* Style the map */
 .map {
+
     border: solid black 3px;
     background-color: $mapback;
+    width: 60%;
+
 
     .row {
         // Display cells left-to-right, instead of the default 'block' mode.

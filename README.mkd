@@ -3,3 +3,13 @@ ROGUELET
 
 An in-browser roguelike with a unique approach to magic.
 
+
+
+
+DEVELOPMENT NOTES
+=================
+
+CSS
+---
+
+    'entity' - element contains a being, like the player or a monster

@@ -44,7 +44,7 @@
         });
 
         // Put the player on the map
-        // map.at(1,2).put(player);
+        map.at(1,2).put(player);
 
         // Drop some debug info
         console.log("map: %o\nplayer: %o", map, player);

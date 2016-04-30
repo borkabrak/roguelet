@@ -12,7 +12,7 @@ var Cell = function(options) {
     my.classname = "Cell";
 
     options = options || {};
-    
+
     /**
      * PROPERTIES
      *
@@ -20,7 +20,7 @@ var Cell = function(options) {
      *
      * container - DOM element representation of the cell
      */
-    
+
     my.contents = [];
     my.container = document.createElement("div");
     my.container.classList.add("cell");
@@ -33,10 +33,20 @@ var Cell = function(options) {
 Cell.prototype.put = function(object) {
     var my = this;
     my.contents.push(object);
-    my.container.innerHTML = object.toString();
+
+    switch (true) {
+
+        case( typeof object.toHTML === "function" ):
+            my.container.appendChild(object.toHTML());
+            break;
+
+        default:
+            my.container.innerHTML = object.toString();
+
+    }
 }
 
-/** 
+/**
  *  push() - alias for put()
  */
 Cell.prototype.push = Cell.prototype.put;

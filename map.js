@@ -32,25 +32,23 @@ var Map = function(options) {
     my.height = options.height    || my.height || 5;
     my.container = document.querySelector(options.container || ".map");
 
-    // Loop through height and width, building contents (data) and container
-    // (DOM) 
-    
+    // Build contents (internal object) and corresponding DOM elements.
     my.contents = [];
-    // for each row..
+    // Rows
     for ( var i = 0; i < my.height; i++ ) {
-
         my.contents[i] = [];
-
         var row = document.createElement("div");
         row.classList.add("row");
 
-        // for each cell within the current row..
+        // Cells
         for ( var j = 0; j < my.width; j++ ) {
             var cell = new Cell();
             my.contents[i][j] = cell;
+            // attach cell to row
             row.appendChild(cell.container);
         }
 
+        // Attach row to DOM
         my.container.appendChild(row);
     };
 

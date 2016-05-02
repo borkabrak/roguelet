@@ -7,9 +7,8 @@
  */
 
 var Cell = function(options) {
-    var my = this;
 
-    my.classname = "Cell";
+    this.classname = "Cell";
 
     options = options || {};
 
@@ -21,29 +20,22 @@ var Cell = function(options) {
      * container - DOM element representation of the cell
      */
 
-    my.contents = [];
-    my.container = document.createElement("div");
-    my.container.classList.add("cell");
-    my.container.innerHTML = Config.empty;
+    this.contents = [];
+    this.container = document.createElement("div");
+    this.container.classList.add("cell");
+    this.container.innerHTML = Config.HTML.empty;
 }
 
 /**
  * add(object) - include <object> in the cell contents
 */
 Cell.prototype.put = function(object) {
-    var my = this;
-    my.contents.push(object);
 
-    switch (true) {
+    // add to contents array
+    this.contents.push(object);
 
-        case( typeof object.toHTML === "function" ):
-            my.container.appendChild(object.toHTML());
-            break;
+    this.show();
 
-        default:
-            my.container.innerHTML = object.toString();
-
-    }
 }
 
 /**
@@ -51,3 +43,44 @@ Cell.prototype.put = function(object) {
  */
 Cell.prototype.push = Cell.prototype.put;
 
+Cell.prototype.toString = function() {
+    return this.contents.toString()
+}
+
+Cell.prototype.remove = function(object) {
+    if (this.contents.indexOf(object) > -1) {
+
+        // Remove from contents array
+        this.contents = this.contents.filter(function(obj) { obj !== object });
+        // Remove from DOM
+        this.show();
+
+        return object;
+    }
+    return undefined;
+}
+
+/* show()
+ *  Update container with current state of contents
+ */
+Cell.prototype.show = function() {
+    // Empty first
+    this.container.innerHTML = Config.HTML.empty;
+
+    // Add one element to DOM
+    //   For now, just the last one in the contents array
+    if (this.contents.length < 1)  { return };
+
+    var object = this.contents[this.contents.length - 1];
+
+    switch (true) {
+
+        case( typeof object.toHTML === "function" ):
+            this.container.appendChild(object.toHTML());
+            break;
+
+        default:
+            this.container.innerHTML = object.toString();
+
+    }
+}

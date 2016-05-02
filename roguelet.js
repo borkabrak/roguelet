@@ -29,7 +29,7 @@
         'config.js',
         'map.js',
         'cell.js',
-        'player.js'
+        'player.js',
 
     ], function() {
 
@@ -46,12 +46,18 @@
         // Put the player on the map
         map.at(1,2).put(player);
 
-        // Drop some debug info
-        console.log("map: %o\nplayer: %o", map, player);
-        
+        // Add key commands
+        window.addEventListener('keypress', function(event) {
+            if (Config.keymap[event.key]) {
+                Config.keymap[event.key].call();
+            }
+        });
+        adjustCellHeight();
+
+        // Debug help
         window.map = map;
         window.player = player;
-        adjustCellHeight();
+
     });
 
 })();

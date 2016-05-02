@@ -58,8 +58,12 @@ var Map = function(options) {
  * at() - return the cell at the given x/y coordinates
  */
 Map.prototype.at = function(x,y) {
-    var my = this;
-    return my.contents[x][y];
+
+    // Allow argument form: at([x, y])
+    if (x.constructor === Array) { y = x[1]; x = x[0]; }
+
+    // The ternary prevents an error if x is undefined
+    return this.contents[x] ?  this.contents[x][y] : undefined;
 }
 
 /**
@@ -84,4 +88,33 @@ Map.prototype.show = function() {
         my.container.appendChild(rowNode);
 
     });
+}
+
+/*
+ * locationOf()
+ *  Return the [x,y] coordinates of the object (or undefined if object does not
+ *  exist on the map)
+ */
+Map.prototype.locationOf = function(object) {
+    for( var y = 0; y < this.height; y++ ) {
+        for( var x = 0; x < this.height; x++ ) {
+            if (this.contents[y][x].contents.indexOf(object) > -1) return [y, x];
+        }
+    }
+}
+
+Map.prototype.moveTo = function(object, destination) {
+    this.at(destination[0], destination[1]).put(this.remove(object))
+}
+
+/* 
+ * remove()
+ *
+ *  Remove the given object from the map 
+ *  Return the result of calling the cell's own remove()
+ * 
+ */
+Map.prototype.remove = function(object) {
+    console.log("this:%o", this);
+    return this.at(this.locationOf(object)).remove(object);
 }

@@ -78,10 +78,8 @@ Map.prototype.show = function() {
     my.contents.forEach(function(rowData) {
         var rowNode = document.createElement("div");
         rowNode.classList.add("row");
-        console.log("row:%o", rowData);
 
         rowData.forEach(function(cellData) {
-            console.log("cellData:%o", cellData);
             rowNode.appendChild(cellData.container);
         });
         
@@ -115,6 +113,5 @@ Map.prototype.moveTo = function(object, destination) {
  * 
  */
 Map.prototype.remove = function(object) {
-    console.log("this:%o", this);
     return this.at(this.locationOf(object)).remove(object);
 }
